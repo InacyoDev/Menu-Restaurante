@@ -1,0 +1,435 @@
+agora o do atendente ```html
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Comanda Atendente</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/style.css" rel="stylesheet" />
+
+  </head>
+  <body class="cmd-body" data-perfil="atendente">
+    <div class="d-flex flex-column flex-md-row min-vh-100">
+      <aside class="cmd-sidebar p-3 d-flex flex-column gap-3">
+        <span class="cmd-logo cmd-logo-claro px-2">Comanda</span>
+
+        <nav
+          class="nav nav-pills flex-md-column gap-1"
+          role="tablist"
+          aria-label="Menu do atendente"
+        >
+          <button
+            class="nav-link active d-flex justify-content-between align-items-center"
+            id="tab-chamados"
+            data-bs-toggle="pill"
+            data-bs-target="#aba-chamados"
+            type="button"
+            role="tab"
+            aria-controls="aba-chamados"
+            aria-selected="true"
+          >
+            <span>Chamados</span>
+            <span class="badge rounded-pill cmd-selo" id="badge-chamados"
+              >0</span
+            >
+          </button>
+          <button
+            class="nav-link d-flex justify-content-between align-items-center"
+            id="tab-novo-pedido"
+            data-bs-toggle="pill"
+            data-bs-target="#aba-novo-pedido"
+            type="button"
+            role="tab"
+            aria-controls="aba-novo-pedido"
+            aria-selected="false"
+          >
+            <span>Novo pedido</span>
+          </button>
+          <button
+            class="nav-link d-flex justify-content-between align-items-center"
+            id="tab-fila"
+            data-bs-toggle="pill"
+            data-bs-target="#aba-fila"
+            type="button"
+            role="tab"
+            aria-controls="aba-fila"
+            aria-selected="false"
+          >
+            <span>Fila de pedidos</span>
+            <span class="badge rounded-pill cmd-selo" id="badge-fila">0</span>
+          </button>
+        </nav>
+
+        <div class="mt-md-auto pt-3 border-top cmd-sidebar-rodape">
+          <div class="fw-semibold js-nome-usuario">Atendente</div>
+          <button
+            type="button"
+            class="btn btn-link p-0 cmd-link-claro"
+            id="btn-sair"
+          >
+            Sair
+          </button>
+        </div>
+      </aside>
+
+      <main class="flex-grow-1 p-3 p-md-5 cmd-conteudo">
+        <div class="tab-content">
+          <section
+            class="tab-pane fade show active"
+            id="aba-chamados"
+            role="tabpanel"
+            aria-labelledby="tab-chamados"
+          >
+            <div
+              class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4"
+            >
+              <div>
+                <h1 class="cmd-titulo-pagina mb-1">Chamados</h1>
+                <span class="cmd-texto-apoio"
+                  >Mesas que pediram atendimento. A lista atualiza
+                  sozinha.</span
+                >
+              </div>
+              <div
+                class="d-flex flex-wrap gap-2"
+                id="filtro-chamados"
+                role="group"
+                aria-label="Filtrar chamados"
+              >
+                <button
+                  type="button"
+                  class="btn btn-sm rounded-pill active js-filtro"
+                  data-status="aberto"
+                >
+                  Abertos
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-sm rounded-pill js-filtro"
+                  data-status="em_atendimento"
+                >
+                  Em atendimento
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-sm rounded-pill js-filtro"
+                  data-status="atendido"
+                >
+                  Atendidos
+                </button>
+              </div>
+            </div>
+
+            <div id="lista-chamados" class="row g-3"></div>
+            <p id="chamados-vazio" class="cmd-texto-apoio d-none">
+              Nenhum chamado nesta situação.
+            </p>
+          </section>
+
+          <section
+            class="tab-pane fade"
+            id="aba-novo-pedido"
+            role="tabpanel"
+            aria-labelledby="tab-novo-pedido"
+          >
+            <h1 class="cmd-titulo-pagina mb-4">Novo pedido</h1>
+
+            <div class="row g-4">
+              <div class="col-12 col-xl-7">
+                <div
+                  id="pedido-filtro-categorias"
+                  class="d-flex flex-wrap gap-2 mb-3"
+                  role="group"
+                  aria-label="Filtrar por categoria"
+                ></div>
+                <div
+                  id="pedido-lista-itens"
+                  class="d-flex flex-column gap-2"
+                ></div>
+              </div>
+
+              <div class="col-12 col-xl-5">
+                <form id="form-pedido" class="card cmd-card" novalidate>
+                  <div class="card-body d-flex flex-column gap-3">
+                    <h2 class="h5 mb-0">Comanda</h2>
+
+                    <div class="row g-3">
+                      <div class="col-4">
+                        <label for="pedido-mesa" class="form-label">Mesa</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="pedido-mesa"
+                          min="1"
+                          placeholder="7"
+                          required
+                        />
+                      </div>
+                      <div class="col-8">
+                        <span class="form-label d-block">Enviar para</span>
+                        <div
+                          class="btn-group w-100"
+                          role="group"
+                          aria-label="Destino do pedido"
+                        >
+                          <input
+                            type="radio"
+                            class="btn-check"
+                            name="destino"
+                            id="destino-cozinha"
+                            value="Cozinha"
+                            autocomplete="off"
+                            checked
+                          />
+                          <label
+                            class="btn btn-outline-dark"
+                            for="destino-cozinha"
+                            >Cozinha</label
+                          >
+                          <input
+                            type="radio"
+                            class="btn-check"
+                            name="destino"
+                            id="destino-balcao"
+                            value="Balcão"
+                            autocomplete="off"
+                          />
+                          <label
+                            class="btn btn-outline-dark"
+                            for="destino-balcao"
+                            >Balcão</label
+                          >
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      id="pedido-linhas"
+                      class="d-flex flex-column gap-2 border-top pt-3"
+                    ></div>
+                    <p id="pedido-vazio" class="cmd-texto-apoio mb-0">
+                      Nenhum item adicionado ainda.
+                    </p>
+
+                    <div>
+                      <label for="pedido-obs" class="form-label"
+                        >Observação</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="pedido-obs"
+                        placeholder="Ex.: sem cebola"
+                      />
+                    </div>
+
+                    <div
+                      class="d-flex justify-content-between align-items-baseline border-top pt-3"
+                    >
+                      <span class="cmd-texto-apoio">Total</span>
+                      <strong class="fs-4" id="pedido-total">R$ 0,00</strong>
+                    </div>
+
+                    <div
+                      id="pedido-erro"
+                      class="alert alert-danger d-none mb-0"
+                      role="alert"
+                    ></div>
+                    <button
+                      type="submit"
+                      class="btn btn-lg cmd-btn-principal"
+                      id="btn-enviar-pedido"
+                    >
+                      Enviar pedido
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </section>
+
+          <section
+            class="tab-pane fade"
+            id="aba-fila"
+            role="tabpanel"
+            aria-labelledby="tab-fila"
+          >
+            <div
+              class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4"
+            >
+              <div>
+                <h1 class="cmd-titulo-pagina mb-1">Fila de pedidos</h1>
+                <span class="cmd-texto-apoio"
+                  >Pedidos enviados para a cozinha e para o balcão.</span
+                >
+              </div>
+              <div
+                class="d-flex flex-wrap gap-2"
+                id="filtro-fila"
+                role="group"
+                aria-label="Filtrar por destino"
+              >
+                <button
+                  type="button"
+                  class="btn btn-sm rounded-pill active js-filtro"
+                  data-destino="Todos"
+                >
+                  Todos
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-sm rounded-pill js-filtro"
+                  data-destino="Cozinha"
+                >
+                  Cozinha
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-sm rounded-pill js-filtro"
+                  data-destino="Balcão"
+                >
+                  Balcão
+                </button>
+              </div>
+            </div>
+
+            <div class="row g-3">
+              <div class="col-12 col-lg-4">
+                <section class="cmd-coluna" aria-labelledby="titulo-pendente">
+                  <header
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <h2 class="h6 mb-0" id="titulo-pendente">Pendente</h2>
+                    <span class="badge cmd-selo" id="contador-pendente">0</span>
+                  </header>
+                  <div
+                    id="coluna-pendente"
+                    class="d-flex flex-column gap-3"
+                  ></div>
+                </section>
+              </div>
+              <div class="col-12 col-lg-4">
+                <section class="cmd-coluna" aria-labelledby="titulo-preparando">
+                  <header
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <h2 class="h6 mb-0" id="titulo-preparando">Preparando</h2>
+                    <span class="badge cmd-selo" id="contador-preparando"
+                      >0</span
+                    >
+                  </header>
+                  <div
+                    id="coluna-preparando"
+                    class="d-flex flex-column gap-3"
+                  ></div>
+                </section>
+              </div>
+              <div class="col-12 col-lg-4">
+                <section class="cmd-coluna" aria-labelledby="titulo-pronto">
+                  <header
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <h2 class="h6 mb-0" id="titulo-pronto">Pronto</h2>
+                    <span class="badge cmd-selo" id="contador-pronto">0</span>
+                  </header>
+                  <div
+                    id="coluna-pronto"
+                    class="d-flex flex-column gap-3"
+                  ></div>
+                </section>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <template id="tpl-chamado">
+      <div class="col-12 col-md-6 col-xl-4">
+        <article class="card cmd-card h-100 cmd-chamado">
+          <div class="card-body d-flex flex-column gap-3">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <span class="cmd-texto-apoio small d-block">Mesa</span>
+                <span class="cmd-numero-mesa js-mesa"></span>
+              </div>
+              <span class="badge cmd-status js-status"></span>
+            </div>
+            <div>
+              <div class="fw-semibold js-motivo"></div>
+              <div class="cmd-texto-apoio small js-tempo"></div>
+            </div>
+            <button
+              type="button"
+              class="btn cmd-btn-principal js-acao"
+            ></button>
+          </div>
+        </article>
+      </div>
+    </template>
+
+    <template id="tpl-item-pedido">
+      <div class="card cmd-card cmd-item-pedido">
+        <div class="card-body d-flex align-items-center gap-3 py-2">
+          <div class="flex-grow-1">
+            <div class="fw-semibold js-nome"></div>
+            <div class="cmd-texto-apoio small js-categoria"></div>
+          </div>
+          <span class="cmd-preco js-preco"></span>
+          <button
+            type="button"
+            class="btn btn-outline-dark js-adicionar"
+            aria-label="Adicionar item"
+          >
+            +
+          </button>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-linha-pedido">
+      <div
+        class="d-flex justify-content-between align-items-center gap-2 cmd-linha-pedido"
+      >
+        <span
+          ><strong class="js-qtd"></strong>× <span class="js-nome"></span
+        ></span>
+        <span class="d-flex align-items-center gap-2">
+          <span class="cmd-texto-apoio js-subtotal"></span>
+          <button
+            type="button"
+            class="btn btn-sm btn-outline-secondary js-remover"
+            aria-label="Remover uma unidade"
+          >
+            −
+          </button>
+        </span>
+      </div>
+    </template>
+
+    <template id="tpl-pedido-fila">
+      <article class="card cmd-card cmd-pedido">
+        <div class="card-body d-flex flex-column gap-2">
+          <div class="d-flex justify-content-between align-items-center">
+            <strong class="fs-5">Mesa <span class="js-mesa"></span></strong>
+            <span class="badge cmd-destino js-destino"></span>
+          </div>
+          <div class="small js-itens"></div>
+          <div class="cmd-texto-apoio small js-obs"></div>
+          <div class="cmd-texto-apoio small js-tempo"></div>
+          <button type="button" class="btn btn-outline-dark js-acao"></button>
+        </div>
+      </article>
+    </template>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/atendente.js"></script>
+  </body>
+</html>
