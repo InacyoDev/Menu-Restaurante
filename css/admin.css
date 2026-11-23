@@ -1,0 +1,252 @@
+
+
+:root {
+    --fundo: #100e0b;
+    --superficie: #1a1713;
+    --borda: #3a3122;
+    --ouro: #c9a45c;
+    --ouro-claro: #e2c17d;
+    --texto: #f4eee2;
+    --apoio: #b5ada0;
+}
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+.cmd-body {
+    background: var(--fundo) !important;
+    color: var(--texto) !important;
+    min-height: 100vh;
+}
+
+
+
+.cmd-sidebar {
+    background: #18140f !important;
+    color: var(--texto);
+    border-right: 1px solid var(--borda);
+    width: 250px;
+    min-width: 250px;
+    min-height: 100vh;
+}
+
+.cmd-logo,
+.cmd-logo-claro {
+    color: var(--ouro) !important;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+
+
+.cmd-sidebar .nav-link {
+    color: var(--apoio);
+    border-radius: 8px;
+    padding: 12px;
+    transition: .2s;
+}
+
+.cmd-sidebar .nav-link:hover {
+    background: #292219;
+    color: var(--ouro-claro);
+}
+
+.cmd-sidebar .nav-link.active {
+    background: var(--ouro) !important;
+    color: #100e0b !important;
+    font-weight: bold;
+}
+
+
+
+.cmd-sidebar-rodape {
+    border-color: var(--borda) !important;
+}
+
+.cmd-link-claro {
+    color: var(--ouro-claro) !important;
+    text-decoration: none;
+}
+
+
+
+.cmd-conteudo {
+    background: var(--fundo);
+}
+
+.cmd-titulo-pagina {
+    color: var(--ouro-claro);
+    font-weight: 700;
+    font-size: 32px;
+}
+
+.cmd-texto-apoio {
+    color: var(--apoio) !important;
+}
+
+
+.cmd-card {
+    background: var(--superficie) !important;
+    color: var(--texto) !important;
+    border: 1px solid var(--borda) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,.15);
+}
+
+.cmd-card .card-body {
+    color: var(--texto);
+}
+
+.cmd-card strong,
+.cmd-card h2,
+.cmd-card h3 {
+    color: var(--ouro-claro);
+}
+
+
+
+.cmd-btn-principal {
+    background: var(--ouro) !important;
+    color: #100e0b !important;
+    border: none !important;
+    border-radius: 8px;
+    font-weight: bold;
+    padding: 10px 18px;
+}
+
+.cmd-btn-principal:hover {
+    background: var(--ouro-claro) !important;
+    color: #100e0b !important;
+}
+
+
+
+.js-filtro {
+    background: var(--superficie) !important;
+    color: var(--apoio) !important;
+    border: 1px solid var(--borda) !important;
+}
+
+.js-filtro.active {
+    background: var(--ouro) !important;
+    color: #100e0b !important;
+    border-color: var(--ouro) !important;
+}
+
+
+
+.cmd-coluna {
+    background: #17130f;
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.cmd-coluna h2 {
+    color: var(--ouro-claro);
+}
+
+
+
+.cmd-selo {
+    background: var(--ouro) !important;
+    color: #100e0b !important;
+}
+
+.cmd-status {
+    background: #49391f;
+    color: var(--ouro-claro);
+    padding: 7px 12px;
+}
+
+.cmd-destino {
+    background: var(--ouro) !important;
+    color: #100e0b !important;
+}
+
+
+
+.cmd-numero-mesa,
+.cmd-preco,
+#pedido-total {
+    color: var(--ouro-claro);
+    font-weight: bold;
+}
+
+
+.form-control {
+    background: #100e0b !important;
+    color: var(--texto) !important;
+    border: 1px solid var(--borda) !important;
+}
+
+.form-control::placeholder {
+    color: #82796c;
+}
+
+.form-control:focus {
+    border-color: var(--ouro) !important;
+    box-shadow: 0 0 0 3px rgba(201,164,92,.15) !important;
+}
+
+.form-label {
+    color: var(--texto);
+}
+
+
+
+.btn-outline-dark {
+    color: var(--ouro-claro) !important;
+    border-color: var(--ouro) !important;
+}
+
+.btn-outline-dark:hover {
+    background: var(--ouro) !important;
+    color: #100e0b !important;
+}
+
+.btn-outline-secondary {
+    color: var(--apoio) !important;
+    border-color: var(--borda) !important;
+}
+
+
+
+.cmd-linha-pedido {
+    color: var(--texto);
+    border-bottom: 1px solid var(--borda);
+    padding: 8px 0;
+}
+
+
+
+@media (max-width: 767px) {
+    .cmd-sidebar {
+        width: 100%;
+        min-width: 0;
+        min-height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--borda);
+    }
+
+    .cmd-sidebar .nav {
+        flex-direction: row !important;
+        flex-wrap: wrap;
+    }
+
+    .cmd-sidebar .nav-link {
+        font-size: 13px;
+        padding: 9px;
+    }
+
+    .cmd-conteudo {
+        padding: 20px !important;
+    }
+
+    .cmd-titulo-pagina {
+        font-size: 25px;
+    }
+}

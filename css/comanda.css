@@ -1,0 +1,273 @@
+
+
+:root {
+    --fundo: #100e0b;
+    --superficie: #1a1713;
+    --ouro: #c9a45c;
+    --ouro-claro: #e2c17d;
+    --texto: #f4eee2;
+    --apoio: #b5ada0;
+    --borda: rgba(201, 164, 92, 0.24);
+    --parallax-x: 0px;
+    --parallax-y: 0px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.cmd-body {
+    min-height: 100vh;
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: "Segoe UI", Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+
+
+.cmd-painel-marca {
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    background: var(--fundo);
+}
+
+.cmd-imagem-fundo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 38% center;
+    z-index: 0;
+    transform: translate3d(var(--parallax-x), var(--parallax-y), 0) scale(1.12);
+    transform-origin: center center;
+    will-change: transform;
+}
+
+/* Transição suave entre a foto e o fundo escuro da direita */
+.cmd-painel-marca::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(16, 14, 11, 0.12) 0%,
+            rgba(16, 14, 11, 0.18) 68%,
+            rgba(16, 14, 11, 0.96) 96%,
+            var(--fundo) 100%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(16, 14, 11, 0.28) 0%,
+            transparent 35%,
+            rgba(16, 14, 11, 0.55) 100%
+        );
+    z-index: 1;
+    pointer-events: none;
+}
+
+.cmd-painel-marca > *:not(.cmd-imagem-fundo) {
+    position: relative;
+    z-index: 2;
+}
+
+
+
+main {
+    background:
+        radial-gradient(circle at top right, rgba(201, 164, 92, 0.09), transparent 55%),
+        var(--fundo);
+}
+
+
+
+.cmd-voltar-site {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--apoio);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: color 0.2s, border-color 0.2s, background-color 0.2s, transform 0.2s;
+}
+
+.cmd-voltar-site:hover {
+    color: var(--ouro-claro);
+    border-color: var(--borda);
+    background: rgba(201, 164, 92, 0.08);
+    transform: translateX(-2px);
+}
+
+
+
+.cmd-caixa-login {
+    max-width: 460px;
+    padding: 42px 38px;
+    background: linear-gradient(180deg, #1e1a15 0%, #16130f 100%);
+    border: 1px solid rgba(201, 164, 92, 0.28);
+    border-radius: 18px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+}
+
+.cmd-badge-sistema {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--ouro-claro);
+    background: rgba(201, 164, 92, 0.12);
+    border: 1px solid rgba(201, 164, 92, 0.3);
+    padding: 4px 10px;
+    border-radius: 999px;
+}
+
+.cmd-titulo-login {
+    font-family: Georgia, serif;
+    font-size: 26px;
+    color: #fffaf0;
+}
+
+.cmd-subtitulo-login {
+    font-size: 13.5px;
+    color: var(--apoio);
+}
+
+
+
+.cmd-caixa-login .nav-tabs {
+    gap: 8px;
+    border-bottom: 1px solid var(--borda);
+}
+
+.cmd-caixa-login .nav-link {
+    color: var(--apoio);
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+    padding: 12px 16px;
+    font-weight: 500;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.cmd-caixa-login .nav-link:hover {
+    color: var(--texto);
+}
+
+.cmd-caixa-login .nav-link.active {
+    color: var(--ouro-claro);
+    background: transparent;
+    border-bottom: 2px solid var(--ouro);
+    font-weight: 600;
+}
+
+
+
+.cmd-caixa-login .form-label {
+    color: var(--texto);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.cmd-caixa-login .form-control {
+    background: var(--fundo);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 9px;
+    padding: 12px 14px;
+    font-size: 15px;
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.cmd-caixa-login .form-control:focus {
+    background: #14110d;
+    color: #ffffff;
+    border-color: var(--ouro);
+    box-shadow: 0 0 0 3px rgba(201, 164, 92, 0.16);
+}
+
+.cmd-caixa-login .form-control::placeholder {
+    color: #7c756b;
+}
+
+
+
+.cmd-btn-principal {
+    background: linear-gradient(135deg, var(--ouro-claro), var(--ouro));
+    color: #14110d;
+    border: none;
+    border-radius: 9px;
+    padding: 13px 16px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    transition: transform 0.2s, filter 0.2s, box-shadow 0.2s;
+}
+
+.cmd-btn-principal:hover {
+    filter: brightness(1.06);
+    color: #14110d;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(201, 164, 92, 0.22);
+}
+
+
+
+.cmd-texto-apoio {
+    color: var(--apoio);
+    font-size: 12.5px;
+    line-height: 1.6;
+}
+
+
+
+@media (max-width: 991px) {
+    .cmd-painel-marca {
+        min-height: 360px;
+    }
+
+    .cmd-painel-marca::after {
+        background: linear-gradient(
+            180deg,
+            rgba(16, 14, 11, 0.15) 0%,
+            rgba(16, 14, 11, 0.25) 60%,
+            var(--fundo) 100%
+        );
+    }
+
+    .cmd-caixa-login {
+        max-width: 500px;
+        padding: 32px 26px;
+    }
+}
+
+@media (max-width: 600px) {
+    .cmd-painel-marca {
+        min-height: 280px;
+    }
+
+    .cmd-titulo-login {
+        font-size: 22px;
+    }
+
+    .cmd-caixa-login {
+        padding: 24px 18px;
+        border-radius: 14px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cmd-imagem-fundo {
+        transform: scale(1.05);
+    }
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio | Sabor da Terra</title>
+    <link rel="stylesheet" href="css/cardapio.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="cabecalho">
+        <a class="logo" href="index.html">
+            <h1>SABOR <span>DA TERRA</span></h1>
+            <p>RESTAURANTE</p>
+        </a>
+
+        <nav class="menu">
+            <a href="index.html">Início</a>
+            <a href="cardapio.html" class="ativo">Cardápio</a>
+            <a href="index.html#sobre">Sobre Nós</a>
+            <a href="index.html#contato">Contato</a>
+        </nav>
+
+        <a class="botao-contorno" href="index.html#contato">Reservar mesa</a>
+    </header>
+
+
+    <div class="cardapio-topo">
+        <p class="subtitulo">NOSSO CARDÁPIO</p>
+        <h1 class="titulo">Sabores para<br>toda a mesa.</h1>
+        <p class="texto">Escolha uma categoria e conheça os pratos da casa.</p>
+    </div>
+
+    <nav class="filtros">
+        <a href="#entradas">Entradas</a>
+        <a href="#pratos">Pratos</a>
+        <a href="#sobremesas">Sobremesas</a>
+    </nav>
+
+
+    <!-- ENTRADAS -->
+    <section class="categoria" id="entradas">
+        <h2>Entradas</h2>
+        <div class="grade">
+
+            <article class="prato" tabindex="0">
+                <img src="fotos/entrada_bruschetta.jpg" alt="Bruschetta com tomate">
+                <div class="prato-corpo">
+                    <div class="prato-linha">
+                        <h3 class="prato-nome">Bruschetta</h3>
+                        <span class="prato-preco">R$ 22,00</span>
+                    </div>
+                    <p class="prato-descricao">Pão italiano tostado, tomate fresco, queijo, manjericão e azeite.</p>
+                </div>
+            </article>
+
+            <article class="prato" tabindex="0">
+                <img src="fotos/entrada_camaro.jpg" alt="Camarão grelhado sobre risoto">
+                <div class="prato-corpo">
+                    <div class="prato-linha">
+                        <h3 class="prato-nome">Camarão</h3>
+                        <span class="prato-preco">R$ 48,00</span>
+                    </div>
+                    <p class="prato-descricao">Camarões grelhados sobre risoto cremoso, finalizados com microverdes.</p>
+                </div>
+            </article>
+
+            <article class="prato" tabindex="0">
+                <img src="fotos/entrada_carpaccio.jpg" alt="Carpaccio de carne">
+                <div class="prato-corpo">
+                    <div class="prato-linha">
+                        <h3 class="prato-nome">Carpaccio</h3>
+                        <span class="prato-preco">R$ 38,00</span>
+                    </div>
+                    <p class="prato-descricao">Finas fatias de carne, rúcula, lascas de parmesão, alcaparras e tomate cereja.</p>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+
+    <!-- PRATOS -->
+    <section class="categoria" id="pratos">
+        <h2>Pratos</h2>
+        <div class="grade">
+
+            <article class="prato" tabindex="0">
+                <img src="fotos/principal_file_mignon.jpg" alt="Filé mignon grelhado">
+                <div class="prato-corpo">
+                    <div class="prato-linha">
+                        <h3 class="prato-nome">Filé mignon</h3>
+                        <span class="prato-preco">R$ 72,00</span>
+                    </div>
+                    <p class="prato-descricao">Grelhado no ponto, com purê, aspargos e tomates assados.</p>
+                </div>
+            </article>
+
+            <article class="prato" tabindex="0">
+                <img src="fotos/principal_risoto.jpg" alt="Risoto de cogumelos">
+                <div class="prato-corpo">
+                    <div class="prato-linha">
+                        <h3 class="prato-nome">Risoto de cogumelos</h3>
+                        <span class="prato-preco">R$ 58,00</span>
+                    </div>
+                    <p class="prato-descricao">Arroz arbóreo cremoso com cogumelos salteados e queijo ralado.</p>
+                </div>
+            </article>
+
+            <article class="prato" tabindex="0">
+                <img src="fotos/principal_salmon.jpg" alt="Salmão grelhado">
+                <div class="prato-corpo">
+                    <div class="prato-linha">
+                        <h3 class="prato-nome">Salmão</h3>
+                        <span class="prato-preco">R$ 68,00</span>
+                    </div>
+                    <p class="prato-descricao">Filé de salmão grelhado sobre risoto, com aspargos e tomates confitados.</p>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+
+    <!-- SOBREMESAS -->
+    <section class="categoria" id="sobremesas">
+        <h2>Sobremesas</h2>
+        <div class="grade">
+
+            <article class="prato" tabindex="0">
+                <img src="fotos/sobremesa_cheesecake.jpg" alt="Cheesecake com frutas vermelhas">
+                <div class="prato-corpo">
+                    <div class="prato-linha">
+                        <h3 class="prato-nome">Cheesecake</h3>
+                        <span class="prato-preco">R$ 24,00</span>
+                    </div>
+                    <p class="prato-descricao">Fatia cremosa com calda de frutas vermelhas.</p>
+                </div>
+            </article>
+
+            <article class="prato" tabindex="0">
+                <img src="fotos/sobremesa_creme_brulee.jpg" alt="Crème brûlée">
+                <div class="prato-corpo">
+                    <div class="prato-linha">
+                        <h3 class="prato-nome">Crème brûlée</h3>
+                        <span class="prato-preco">R$ 22,00</span>
+                    </div>
+                    <p class="prato-descricao">Creme de baunilha com casquinha de açúcar caramelizado e frutas.</p>
+                </div>
+            </article>
+
+            <article class="prato" tabindex="0">
+                <img src="fotos/sobremesa_petit_gateau.jpg" alt="Petit gâteau com sorvete">
+                <div class="prato-corpo">
+                    <div class="prato-linha">
+                        <h3 class="prato-nome">Petit gâteau</h3>
+                        <span class="prato-preco">R$ 26,00</span>
+                    </div>
+                    <p class="prato-descricao">Bolinho de chocolate com recheio cremoso, sorvete de creme e morangos.</p>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <div style="height:50px"></div>
+
+    <footer class="rodape">
+        © 2026 Sabor da Terra — Restaurante
+    </footer>
+
+</body>
+</html>
