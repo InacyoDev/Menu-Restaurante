@@ -1,46 +1,69 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Comanda Entrar</title>
+    <meta name="theme-color" content="#0E2F2A" />
+    <meta name="description" content="Villa Nobel — sistema de atendimento e cardápio digital." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230E2F2A'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-size='40' fill='%23F3F4F0'%3EV%3C/text%3E%3C/svg%3E" />
+<title>Villa Nobel | Entrar</title>
 
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet"
     />
 
-    <link href="css/comanda.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    />
+
+    <link href="css/style.css" rel="stylesheet" />
 </head>
 
-<body class="cmd-body" data-pagina="login">
+<body class="cmd-body">
 
     <div class="container-fluid p-0">
         <div class="row g-0 min-vh-100">
 
-            <!-- PAINEL DA IMAGEM -->
             <aside class="col-12 col-lg-6 d-flex cmd-painel-marca flex-column justify-content-between p-4 p-lg-5">
                 <img
-                    src="fotos/foto1.webp"
-                    alt="Restaurante Sabor da Terra"
+                    src="fotos/foto2.webp"
+                    alt=""
                     class="cmd-imagem-fundo"
                 />
+                <span class="cmd-logo">Villa Nobel</span>
+
+                <div class="cmd-letreiro">
+                    <span class="cmd-letreiro-nome">Villa Nobel</span>
+                    <span class="cmd-letreiro-linha"></span>
+                    <span class="cmd-letreiro-tipo">Restaurante</span>
+                </div>
+
+                <dl class="cmd-detalhes">
+                    <div>
+                        <dt>Localização</dt>
+                        <dd>Endereço a definir</dd>
+                    </div>
+                    <div>
+                        <dt>Funcionamento</dt>
+                        <dd>Horários a definir</dd>
+                    </div>
+                    <div>
+                        <dt>Reservas</dt>
+                        <dd>Contato a definir</dd>
+                    </div>
+                </dl>
             </aside>
 
-            <!-- PAINEL DE LOGIN -->
             <main class="col-12 col-lg-6 d-flex flex-column align-items-center justify-content-center p-4">
-
-                <div class="w-100 mb-3" style="max-width: 460px;">
-                    <a href="pag1.html" class="cmd-voltar-site">
-                        <span aria-hidden="true">←</span> Voltar para o site
-                    </a>
-                </div>
 
                 <div class="cmd-caixa-login w-100">
 
                     <div class="mb-4">
-                        <span class="cmd-badge-sistema">COMANDA DIGITAL</span>
+                        <span class="cmd-badge-sistema">VILLA NOBEL</span>
                         <h2 class="cmd-titulo-login mt-2 mb-1">Acesse o sistema</h2>
                         <p class="cmd-subtitulo-login mb-0">Entre com suas credenciais para continuar.</p>
                     </div>
@@ -81,7 +104,6 @@
 
                     <div class="tab-content">
 
-                        <!-- LOGIN -->
                         <section
                             class="tab-pane fade show active"
                             id="painel-entrar"
@@ -141,7 +163,6 @@
                             </form>
                         </section>
 
-                        <!-- CADASTRO -->
                         <section
                             class="tab-pane fade"
                             id="painel-cadastro"
@@ -228,6 +249,7 @@
     <script src="js/storage.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/login.js"></script>
+    <script src="js/villa-ux.js"></script>
 
 </body>
 </html>

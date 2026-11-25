@@ -1,21 +1,33 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
   <head>
-    
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Comanda Administrador</title>
+    <meta name="theme-color" content="#0E2F2A" />
+    <meta name="description" content="Villa Nobel — sistema de atendimento e cardápio digital." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230E2F2A'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-size='40' fill='%23F3F4F0'%3EV%3C/text%3E%3C/svg%3E" />
+<title>Villa Nobel | Administrador</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link href="css/admin.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="css/style.css" rel="stylesheet" />
 
   </head>
   <body class="cmd-body" data-perfil="admin">
     <div class="d-flex flex-column flex-md-row min-vh-100">
       <aside class="cmd-sidebar p-3 d-flex flex-column gap-3">
-        <span class="cmd-logo cmd-logo-claro px-2">Comanda</span>
+        <div class="cmd-marca px-2">
+          <span class="cmd-logo">Villa Nobel</span>
+          <span class="cmd-marca-tipo">Restaurante</span>
+        </div>
 
         <nav
           class="nav nav-pills flex-md-column gap-1"
@@ -32,7 +44,8 @@
             aria-controls="aba-visao-geral"
             aria-selected="true"
           >
-            Visão geral
+            <svg class="cmd-icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13h6V4H4zM14 20h6V4h-6zM4 20h6v-3H4z"/></svg>
+            <span>Visão geral</span>
           </button>
           <button
             class="nav-link"
@@ -44,7 +57,8 @@
             aria-controls="aba-cardapio"
             aria-selected="false"
           >
-            Cardápio
+            <svg class="cmd-icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v8M4 3v5a3 3 0 0 0 6 0V3M7 11v10M17 3c-2 2-3 5-3 8h3v10"/></svg>
+            <span>Cardápio</span>
           </button>
           <button
             class="nav-link"
@@ -56,7 +70,8 @@
             aria-controls="aba-usuarios"
             aria-selected="false"
           >
-            Usuários
+            <svg class="cmd-icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 20v-1a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v1M10 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6M20 20v-1a3 3 0 0 0-2-2.8"/></svg>
+            <span>Usuários</span>
           </button>
         </nav>
 
@@ -117,6 +132,36 @@
                 </div>
               </div>
             </div>
+
+            <div class="row g-3 mt-1" id="painel-resumo">
+              <div class="col-12 col-xl-5">
+                <section class="card cmd-card h-100" aria-labelledby="titulo-ult-chamados">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                      <h2 class="h5 mb-0" id="titulo-ult-chamados">Últimos chamados</h2>
+                      <span class="cmd-texto-apoio small" id="ult-chamados-hora"></span>
+                    </div>
+                    <ul class="cmd-lista-atividade list-unstyled mb-0" id="ult-chamados"></ul>
+                  </div>
+                </section>
+              </div>
+              <div class="col-12 col-md-6 col-xl-4">
+                <section class="card cmd-card h-100" aria-labelledby="titulo-fila-status">
+                  <div class="card-body">
+                    <h2 class="h5 mb-3" id="titulo-fila-status">Fila do balcão</h2>
+                    <div class="cmd-barras" id="barras-fila"></div>
+                  </div>
+                </section>
+              </div>
+              <div class="col-12 col-md-6 col-xl-3">
+                <section class="card cmd-card h-100" aria-labelledby="titulo-por-categoria">
+                  <div class="card-body">
+                    <h2 class="h5 mb-3" id="titulo-por-categoria">Cardápio por categoria</h2>
+                    <div class="cmd-barras" id="barras-categorias"></div>
+                  </div>
+                </section>
+              </div>
+            </div>
           </section>
 
           <section
@@ -139,7 +184,12 @@
             </div>
 
             <div class="row g-4 align-items-start">
-              <div class="col-12 col-xl-8">
+              <div class="col-12 col-xxl-8">
+                <div class="cmd-busca cmd-busca-tabela mb-3" data-busca-tabela="corpo-cardapio">
+                  <label for="busca-itens" class="visually-hidden">Buscar item</label>
+                  <svg class="cmd-icone" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg>
+                  <input type="search" id="busca-itens" class="form-control" placeholder="Buscar item ou categoria" autocomplete="off" />
+                </div>
                 <div class="card cmd-card">
                   <div class="table-responsive">
                     <table
@@ -164,7 +214,7 @@
                 </p>
               </div>
 
-              <div class="col-12 col-xl-4">
+              <div class="col-12 col-xxl-4">
                 <form id="form-item" class="card cmd-card" novalidate>
                   <div class="card-body d-flex flex-column gap-3">
                     <h2 class="h5 mb-0" id="titulo-form-item">Novo item</h2>
@@ -218,16 +268,72 @@
                         rows="3"
                       ></textarea>
                     </div>
-                    <div>
-                      <label for="item-imagem" class="form-label"
-                        >Link da imagem (opcional)</label
+                    <fieldset class="cmd-ficha-campos" id="ficha-prato">
+                      <legend class="form-label mb-1">Ficha do prato</legend>
+                      <p class="cmd-texto-apoio small mb-2">
+                        Aparece no cardápio do cliente. Conte do que é feito e o
+                        que há de especial, sem entregar a receita.
+                      </p>
+                      <div class="mb-2">
+                        <label for="item-ingredientes" class="form-label small mb-1">Ingredientes</label>
+                        <input type="text" class="form-control" id="item-ingredientes" placeholder="Ex.: bacalhau, batata, salsa" />
+                      </div>
+                      <div class="mb-2">
+                        <label for="item-preparo" class="form-label small mb-1">Como é preparado</label>
+                        <input type="text" class="form-control" id="item-preparo" placeholder="Ex.: modelado à mão e frito na hora" />
+                      </div>
+                      <div class="row g-2">
+                        <div class="col-5">
+                          <label for="item-tempo" class="form-label small mb-1">Tempo</label>
+                          <input type="text" class="form-control" id="item-tempo" placeholder="Ex.: 15 min" />
+                        </div>
+                        <div class="col-7">
+                          <label for="item-diferencial" class="form-label small mb-1">Diferencial</label>
+                          <input type="text" class="form-control" id="item-diferencial" placeholder="Ex.: molho da casa" />
+                        </div>
+                      </div>
+                    </fieldset>
+                    <div id="zona-imagem">
+                      <span class="form-label d-block" id="rotulo-imagem"
+                        >Imagem (opcional)</span
                       >
-                      <input
-                        type="url"
-                        class="form-control"
-                        id="item-imagem"
-                        placeholder="https://..."
-                      />
+                      <input type="url" class="d-none" id="item-imagem" />
+
+                      <label
+                        class="cmd-zona-area"
+                        id="zona-imagem-area"
+                        for="item-imagem-arquivo"
+                      >
+                        <span class="cmd-zona-texto">
+                          <svg class="cmd-icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>
+                          <strong>Arraste uma imagem até aqui</strong>
+                          <span>ou clique para escolher do computador. Também dá para colar (Ctrl+V).</span>
+                        </span>
+                        <input
+                          type="file"
+                          class="visually-hidden"
+                          id="item-imagem-arquivo"
+                          accept="image/*"
+                        />
+                      </label>
+
+                      <div class="d-flex gap-2 mt-2">
+                        <input
+                          type="url"
+                          class="form-control form-control-sm"
+                          id="item-imagem-link"
+                          placeholder="ou cole um link: https://..."
+                          aria-label="Link da imagem"
+                        />
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary text-nowrap"
+                          id="item-imagem-remover"
+                          hidden
+                        >
+                          Remover
+                        </button>
+                      </div>
                     </div>
                     <div class="form-check form-switch">
                       <input
@@ -330,7 +436,12 @@
             </div>
 
             <div class="row g-4 align-items-start">
-              <div class="col-12 col-xl-8">
+              <div class="col-12 col-xxl-8">
+                <div class="cmd-busca cmd-busca-tabela mb-3" data-busca-tabela="corpo-usuarios">
+                  <label for="busca-usuarios" class="visually-hidden">Buscar usuário</label>
+                  <svg class="cmd-icone" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg>
+                  <input type="search" id="busca-usuarios" class="form-control" placeholder="Buscar por nome ou e-mail" autocomplete="off" />
+                </div>
                 <div class="card cmd-card">
                   <div class="table-responsive">
                     <table
@@ -355,7 +466,7 @@
                 </p>
               </div>
 
-              <div class="col-12 col-xl-4">
+              <div class="col-12 col-xxl-4">
                 <form id="form-usuario" class="card cmd-card" novalidate>
                   <div class="card-body d-flex flex-column gap-3">
                     <h2 class="h5 mb-0" id="titulo-form-usuario">
@@ -478,5 +589,6 @@
     <script src="js/storage.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/admin.js"></script>
+    <script src="js/villa-ux.js"></script>
   </body>
 </html>
